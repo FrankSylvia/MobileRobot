@@ -1,0 +1,5 @@
+c:\users\frankadmin\documents\visual studio 2015\Projects\Realgy\MobileRobot\MobileRobot\bin\Debug\MobileRobot.exe.config
+c:\users\frankadmin\documents\visual studio 2015\Projects\Realgy\MobileRobot\MobileRobot\bin\Debug\MobileRobot.exe
+c:\users\frankadmin\documents\visual studio 2015\Projects\Realgy\MobileRobot\MobileRobot\bin\Debug\MobileRobot.pdb
+c:\users\frankadmin\documents\visual studio 2015\Projects\Realgy\MobileRobot\MobileRobot\obj\Debug\MobileRobot.exe
+c:\users\frankadmin\documents\visual studio 2015\Projects\Realgy\MobileRobot\MobileRobot\obj\Debug\MobileRobot.pdb
