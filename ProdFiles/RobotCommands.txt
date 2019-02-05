@@ -1,0 +1,11 @@
+# Bump into rock, walk around rock, bump into rock again
+F
+R
+L
+F
+L
+F
+L
+F
+L
+L

@@ -31,11 +31,10 @@ namespace MobileRobot
         private int rows;
         private int cols;
 
-        public Robot(Grid RobotGrid, String rows, String cols, Coords Current)
+        public Robot(Grid RobotGrid, String rows, String cols, Coords Current, String filename)
         {
 
             //Grid RobotGrid = new Grid(rows, cols);
-            String RobotCommandsFile = "C:\\Realgy\\Test\\RobotCommands.txt";
 
             Robbie = RobotGrid;
 
@@ -46,7 +45,7 @@ namespace MobileRobot
 
                 RobotGrid.recordLocation();
 
-                StreamReader reader = new StreamReader(File.OpenRead(RobotCommandsFile));
+                StreamReader reader = new StreamReader(File.OpenRead(filename));
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();

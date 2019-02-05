@@ -31,7 +31,7 @@ namespace MobileRobot
 
         object[,] array;
 
-        Obstruction ob;
+        Obstruction ob,temp;
 
         Coords Current;
         //Coords Target;
@@ -98,6 +98,11 @@ namespace MobileRobot
                     {
                         Console.WriteLine("Obstruction location is out of bounds" + line);
                         continue;
+                    }
+
+                    Obstruction temp = (Obstruction) getLocationObject(r, c);
+                    if (temp != null) {
+                        Console.WriteLine("Warning: Overlaying Obstruction at location " + values[1] + "," + values[1]);
                     }
 
                     if (values[0] == "Rock")

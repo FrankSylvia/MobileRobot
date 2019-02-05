@@ -48,25 +48,54 @@ namespace MobileRobot
     {
         static void Main(string[] args)
         {
-            String rows, cols;
+
+            String TestFolder = "C:\\Realgy\\MobileRobot\\TestFiles";
+            if (args.Length > 0)
+            {
+                if (args[0] == "TEST")
+                {
+                    TestFolder = "C:\\Realgy\\MobileRobot\\TestFiles";
+                }
+                else
+                {
+                    Console.WriteLine("Parameter must be either TEST or PROD");
+                }
+
+            }
+            String rows = "", cols = "";
             String coordsEntry;
             Coords Current = new Coords();
+            String test = "";
+
+            String ObstructionsFile = TestFolder + "\\Obstructions.csv";
+            String RobotCommandsFile = TestFolder + "\\RobotCommands.txt";
 
             Console.WriteLine("Starting MobileRobot");
 
-            // Testing setup stuff
-            // Move desired test files to the C:\\Realgy\\Test folder
-            // Store various tests in sub-folders
-            String ObstructionsFile = "C:\\Realgy\\Test\\obstructions.csv";
-            String StartupFile = "C:\\Realgy\\Test\\Startup.txt";
-            String test = "";
-            StreamReader startupReader = new StreamReader(File.OpenRead(StartupFile));
-            test = startupReader.ReadLine();
-            startupReader.Close();
+            try
+            {
+                // Testing setup stuff
+                // Move desired test files to the C:\\Realgy\\Test folder
+                // Store various tests in sub-folders
+
+                String StartupFile = "";
+                if (args[0] == "TEST")
+                {
+                    StartupFile = TestFolder + "\\Startup.txt";
+                    StreamReader startupReader = new StreamReader(File.OpenRead(StartupFile));
+                    test = startupReader.ReadLine();
+                    startupReader.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
 
 
-            if (test.Length > 0) {
+            if (test.Length > 0)
+            {
                 // Apply the test startup data
                 var t1 = test.Split(',');
                 rows = t1[0];
@@ -91,7 +120,7 @@ namespace MobileRobot
                 Current.r = Convert.ToInt32(temp[0]);
                 Current.c = Convert.ToInt32(temp[1]);
                 Current.d = temp[2];
-                
+
             }
             if ((Current.r >= Convert.ToInt32(rows)) || (Current.c >= Convert.ToInt32(cols)))
             {
@@ -107,12 +136,12 @@ namespace MobileRobot
                 return;
 
             }
-
+           
             Grid RobotGrid = new Grid(rows, cols);
             RobotGrid.populate(ObstructionsFile);
             RobotGrid.dump();
 
-            Robot Robbie = new Robot(RobotGrid,rows,cols,Current);
+            Robot Robbie = new Robot(RobotGrid,rows,cols,Current, RobotCommandsFile);
  
             Console.ReadKey();
         }
